@@ -63,7 +63,8 @@ public class LoginController {
         try {
             subject.login(token);
             ActiverUser activerUser = (ActiverUser) subject.getPrincipal();
-            opsValue.set("username",activerUser.getUser().getName());
+            //opsValue.set("username",activerUser.getUser().getName());
+            opsValue.set("username",activerUser.getUser().getName(), Constast.expireTime, TimeUnit.MINUTES);
             WebUtils.getSession().setAttribute("user", activerUser.getUser());
             //记录登录日志
             LogLogin logLogin = new LogLogin();

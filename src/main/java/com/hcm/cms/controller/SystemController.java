@@ -56,7 +56,9 @@ public class SystemController {
         WebUtils.getSession().invalidate();
         String userName = redisTemplate.opsForValue().get("username");
         if (!StringUtils.isEmpty(userName)) {
-            redisCache.deleteObject("username");
+            redisTemplate.opsForValue().getOperations().delete("username");
+            //删除不了key，得研究一下
+            //redisCache.deleteObject("username");
         }
         return "system/index/login";
     }
