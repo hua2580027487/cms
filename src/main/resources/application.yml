@@ -1,3 +1,4 @@
+
 #配置数据源的属性
 spring:
 #redis的配置
@@ -90,4 +91,5 @@ shiro:
   log-out-url: /login/logout*
   authc-ulrs:
     - /**
-
+server:
+  port: 9494

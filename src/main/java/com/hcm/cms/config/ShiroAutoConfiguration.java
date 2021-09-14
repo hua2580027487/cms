@@ -95,7 +95,9 @@ public class ShiroAutoConfiguration {
 		if (anonUrls != null && anonUrls.length > 0) {
 			for (String anon : anonUrls) {
 				filterChainDefinitionMap.put(anon, "anon");
+
 			}
+			filterChainDefinitionMap.put("/templates/**", "anon");
 		}
 		// 设置登出的路径
 		if (null != logOutUrl) {
