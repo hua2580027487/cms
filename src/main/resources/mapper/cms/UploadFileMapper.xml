@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hcm.cms.mapper.UploadFileMapper">
+    <select id="ownedMedicineList" resultType="com.hcm.cms.vo.SelfOwnedMedicine">
+        select * from zy_self_owned_medicine where  PHY_ID=4
+    </select>
+    <update id="updateDataPinYin" parameterType="java.util.Map">
+        UPDATE zy_self_owned_medicine set MEDICINE_NAME_PINYIN=#{py} WHERE MEDICINE_ID=#{meId}
+    </update>
+    <select id="ownedModMedicineList" resultType="com.hcm.cms.vo.SelfOwnedMedicine">
+        SELECT MEDICINE_NAME,MEDICINE_PRICE FROM mod_medicine
+    </select>
+    <update id="updateDataById" parameterType="com.hcm.cms.vo.SelfOwnedMedicine">
+        UPDATE zy_self_owned_medicine set MEDICINE_PRICE=#{medicinePrice} WHERE MEDICINE_ID=#{medicineId}
+    </update>
+    <select id="patientList" resultType="com.hcm.cms.vo.ThirdMemberPatient">
+        SELECT * FROM zy_third_member_patient
+    </select>
+    <update id="updatePatient" parameterType="java.util.Map">
+        UPDATE zy_third_member_patient set TH_MEM_BIRTHDAY=#{birthday} WHERE TH_MEM_PA_ID=#{paId}
+    </update>
+    <update id="updatePatient2" parameterType="com.hcm.cms.vo.ThirdMemberPatient">
+        UPDATE zy_third_member_patient set TH_MEM_BIRTHDAY=#{thMemBirthday} WHERE TH_MEM_PA_ID=#{thMemPaId}
+    </update>
+</mapper>

@@ -91,6 +91,10 @@
 		<div class="layui-footer footer">
 			<p><span>mafeng@</span></p>
 		</div>
+		<div  class="layui-footer footer">
+			<input id="articleImageFile" name="excelFile" type="file" class="form-control" style="width: 300px; display: inline;" />
+			<a class="btn btn-warning" id = "import" onclick="importExcel()" ><i class="fa fa-upload"></i> 导入</a>
+		</div>
 	</div>
 
 	<!-- 移动导航 -->
@@ -101,6 +105,32 @@
 	<script type="text/javascript" src="/resources/js/cache.js"></script>
 	
 	<script type="text/javascript">
+		function importExcel() {
+			var formData = new FormData();
+			var name = $("#articleImageFile").val();
+			formData.append("file", $("#articleImageFile")[0].files[0]);
+			formData.append("name", name);//这个地方可以传递多个参数
+			$.ajax({
+				url: '/importExcel',
+				type: 'POST',
+				async: false,
+				data: formData,
+				// 告诉jQuery不要去处理发送的数据
+				processData: false,
+				// 告诉jQuery不要去设置Content-Type请求头
+				contentType: false,
+				beforeSend: function () {
+					console.log("正在进行，请稍候");
+				},
+				success: function (responseStr) {
+					if (responseStr == "上传成功") {
+						alert("导入成功");
+					} else {
+						alert("导入失败");
+					}
+				}
+			});
+		}
 	var $,tab,dataStr,layer;
 	layui.config({
 		base : "/resources/js/"

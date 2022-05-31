@@ -3,9 +3,9 @@
 spring:
 #redis的配置
   redis:
-    host: 47.113.193.76
+    host: 127.0.0.1
     port: 6379
-    password: 123456
+    password:
     jedis:
       pool:
         max-idle: 20
